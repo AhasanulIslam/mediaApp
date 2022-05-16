@@ -11,6 +11,7 @@ const ApprovePage = () => {
 const [isEditing, setIsEditing] = useState(false);
   const [editingStudent, setEditingStudent] = useState(null);
   const [dataSource, setDataSource] = useState([]);
+  const [ following_user, setFollowing_user] = useState(1);
 
   useEffect(() => {
     console.log("lsdkflsdk");
@@ -30,26 +31,30 @@ const [isEditing, setIsEditing] = useState(false);
       });
   }, [isEditing]);
 
-  function refreshPage() {
-    window.location.reload(false);
-  }
+  // function refreshPage() {
+  //   window.location.reload(false);
+  // }
 
   const approve = async (id)  => {
     console.log("Approved id", id);
 
     try {
-      const { data, status } = await axios.post(
-        `https://soapp-nodejs.herokuapp.com/users/follow/${id}`,
+      const followUser = { following_user }
+      console.log(followUser);
+      const ggwp1 = await axios.post(
+        `https://soapp-nodejs.herokuapp.com/users/follow`,followUser,
         {
           headers: {
+
             Authorization: `Bearer ${localStorage.getItem("user-info")}`,
           },
         }
       );
+      console.log("ggwp",ggwp1)
 
       setIsEditing(!isEditing)
+      console.log("zxcjvxc", ggwp1);
 
-      console.log(data, status);
     } catch (error) {
       console.log(error);
     }

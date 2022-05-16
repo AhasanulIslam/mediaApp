@@ -4,7 +4,6 @@ import axios from "axios";
 import { Table } from "antd";
 import "antd/dist/antd.css";
 import "../../../App.css";
-import { Card } from 'antd';
 
 
 const Approve = () => {

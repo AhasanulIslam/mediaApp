@@ -4,7 +4,7 @@ import ApprovePage from "./component/Admin/AdminPanal.jsx/ApprovePage";
 import QuizDetalis from "./component/Admin/AdminPanal.jsx/QuizDetalis";
 import Reject from "./component/Admin/AdminPanal.jsx/Reject";
 import StudentList from "./component/Admin/AdminPanal.jsx/StudentList";
-import From from "./component/Admin/From";
+import From from "./component/SignUp/From";
 import Login from "./component/Admin/Login";
 import QuizFrom from "./component/Admin/Tutor.jsx/QuizFrom";
 import Studentlist_tutor from "./component/Admin/Tutor.jsx/Studentlist_tutor";
@@ -13,7 +13,7 @@ import Navber from "./component/Navber";
 import CustomizedTables from "./component/Table";
 
 import "./App.css";
-import CreatePost from "./component/Admin/AdminPanal.jsx/CreatePost";
+import CreatePost from "./component/Admin/AdminPanal.jsx/Post/CreatePost";
 
 function App() {
   return (

@@ -42,7 +42,7 @@ const Navber = () => {
               className="nav-links"
               onClick={handleClick}
             >
-              User
+              Users
             </NavLink>
           </li>
           <li className="nav-item">

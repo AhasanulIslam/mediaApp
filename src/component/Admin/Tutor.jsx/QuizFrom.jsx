@@ -2,7 +2,7 @@ import axios from "axios";
 import produce from "immer";
 import React, { useState } from "react";
 import NavberTutor from "../../NavberTutor";
-import Validation from "../Validation";
+import Validation from "../../SignUp/Validation";
 const QuizFrom = () => {
   const [values, setValues] = useState({
     quiz_name: "",

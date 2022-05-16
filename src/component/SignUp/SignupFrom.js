@@ -1,8 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Validation from './Validation';
-import cart from "./cart.png"
-import "./Login.css";
+import "../Admin/Login.css";
 import {
   Form,
   Select,
@@ -17,7 +16,7 @@ const SignupFrom = ({ submitForm }) => {
         email: "",
         password: "",
         gender: "",
-        dateof_birth: ""
+        date_of_birth: ""
     })
 
     const { Option } = Select;
@@ -40,7 +39,7 @@ const SignupFrom = ({ submitForm }) => {
         setErrors(Validation(values))
         setDataIsCorrect(true)
         console.log(values);
-        axios.post(`https://nano-quiz-api.herokuapp.com/users/signup`,
+        axios.post(`https://soapp-nodejs.herokuapp.com/users/register`,
      values)
         .then(res => console.log(res.data))
         .catch(e => console.log(e))
@@ -81,7 +80,7 @@ const SignupFrom = ({ submitForm }) => {
               <h1>SIGN UP</h1>
 
 
-              <span>Use name, email and Password</span>
+              <span>Use Firstname, lastname, date of birth, email, gender and Password</span>
 
               {/* <input type="text" placeholder="username" />
               <input type="text" placeholder="password" />
@@ -104,21 +103,29 @@ const SignupFrom = ({ submitForm }) => {
                 </div>
                     <label className='label'>Email</label>
                     <input className='input' type="email"  name='email' value={values.email} onChange={handleChange}/>
-
                     {errors.email && <p className='error'>{errors.email}</p>}
                 </div>
 
                 <div className='email'>
                     <div className='name'>
                     <label className='label'>Date of Birth</label>
-                    <input className='input' type="date" name='last_name' value={values.last_name} onChange={handleChange}/>
-                    {errors.last_name && <p className='error'>{errors.last_name}</p>}
+                    <input className='input' type="date" name='date_of_birth' value={values.date_of_birth} onChange={handleChange}/>
+                    {errors.date_of_birth && <p className='error'>{errors.date_of_birth}</p>}
                 </div></div>
                 <div className='email'>
+
+                <div className='email'>
+                    <div className='name'>
+                    <label className='label'>Gender</label>
+                    <input className='input' type="text" name='gender' value={values.gender} onChange={handleChange}/>
+                    {errors.gender && <p className='error'>{errors.gender}</p>}
+                </div></div>
+                <div className='email'></div>
                   
-                <Form.Item
+                {/* <Form.Item
         name="gender"
         label="Gender"
+        value={values.gender} onChange={handleChange}
         rules={[
           {
             required: true,
@@ -131,7 +138,7 @@ const SignupFrom = ({ submitForm }) => {
           <Option value="female">Female</Option>
           <Option value="other">Other</Option>
         </Select>
-      </Form.Item>
+      </Form.Item> */}
                 
 
                 
