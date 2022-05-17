@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Validation from '../../../SignUp/Validation';
-import "../../../Admin/Login.css";
+import "../../../Login/Login.css";
 import { 
   Select
 } from 'antd';

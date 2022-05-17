@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Validation from './Validation';
-import "../Admin/Login.css";
+import "../../component/Login/Login1.css";
 import {
   Form,
   Select,
@@ -61,32 +61,34 @@ const SignupFrom = ({ submitForm }) => {
     // }, [])
 
   return (
+
     
-            <div>
-      <div className="login-page-10">
-        <div className="row align-items-center h-100">
-          <div className="col-md-5 first-part d-flex align-items-center justify-content-center flex-column">
-            {/* <h1 className="text-start w-100">Welcome to Quiz App</h1> */}
-            <p className="text-start w-100">
-              Sign in with your credentionals to enjoy this app
-            </p>
-            <p className="text-start w-100">Sign In Here </p>
-            {/* <img src={cart} alt="" className="my-5"/> */}
+<div className="login__container">
+      <div className="login__welcome">
+        {/* <div className="login__logo">
+          <img src='https://assets-global.website-files.com/5f3c19f18169b65d9d0bf384/5f3c19f18169b655820bf3d4_asset%2021.svg' alt='logo'/>
+        </div> */}
 
-            <button><a href="/login">SIGN IN </a></button>
-          </div>
-          <div className="col-md-7 second-part d-flex flex-column align-items-end">
-            <div className="text-part d-flex flex-column">
-              <h1>SIGN UP</h1>
+        <p>Sign Up</p>
+      </div>
 
 
-              <span>Use Firstname, lastname, date of birth, email, gender and Password</span>
+        <div className="login__form-container">
+        <div className="login__form">
+    
+    {/* <div className="signup">
+    <div className="signup__content">
+      <div className="signup__container">
+        <div className="signup__title">Sign Up</div>
+
+              <span>Use Firstname, lastname, date of birth, email, gender and Password</span> */}
 
               {/* <input type="text" placeholder="username" />
               <input type="text" placeholder="password" />
               <button>LOGIN</button> */}
 
-            <form className='from-wrapper'>
+            <form >
+            <div className="signup__subtitle"></div>
 
                <div className='email'>
                     <div className='name'>
@@ -101,7 +103,7 @@ const SignupFrom = ({ submitForm }) => {
                     <input className='input' type="text" name='last_name' value={values.last_name} onChange={handleChange}/>
                     {errors.last_name && <p className='error'>{errors.last_name}</p>}
                 </div>
-                    <label className='label'>Email</label>
+                    <label className='label' >Email</label>
                     <input className='input' type="email"  name='email' value={values.email} onChange={handleChange}/>
                     {errors.email && <p className='error'>{errors.email}</p>}
                 </div>
@@ -150,15 +152,13 @@ const SignupFrom = ({ submitForm }) => {
 
                 </div>
                 <div>
-                    <button className='submit' onClick={handleFromSubmit}>Sign Up</button>
+                    <button  onClick={handleFromSubmit}>Sign Up</button>
                 </div>
                 </div>
             </form>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+          </div>
   )
 }
 

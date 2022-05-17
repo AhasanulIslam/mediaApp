@@ -6,17 +6,17 @@ import { Button, Modal, Table, Tooltip } from "antd";
 import "antd/dist/antd.css";
 import "../../../App.css";
 
-const ApprovePage = () => {
+const Follow = () => {
 
 const [isEditing, setIsEditing] = useState(false);
   const [editingStudent, setEditingStudent] = useState(null);
   const [dataSource, setDataSource] = useState([]);
-  const [ following_user, setFollowing_user] = useState(1);
+  const [ following_user, setFollowing_user] = useState({});
 
   useEffect(() => {
     console.log("lsdkflsdk");
     axios
-      .get("https://soapp-nodejs.herokuapp.com/users/view-all-user",{
+      .get("https://soapp-nodejs.herokuapp.com/users/view-userlist",{
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user-info")}`,
         },
@@ -24,12 +24,12 @@ const [isEditing, setIsEditing] = useState(false);
     )
       .then((res) => {
         console.log("HELLO", res);
-        setDataSource(res.data.userAll);
+        setDataSource(res.data.user);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [isEditing]);
+  }, [isEditing,following_user]);
 
   // function refreshPage() {
   //   window.location.reload(false);
@@ -37,12 +37,15 @@ const [isEditing, setIsEditing] = useState(false);
 
   const approve = async (id)  => {
     console.log("Approved id", id);
-
+    console.log("follow id",following_user)
+    // setFollowing_user(id)
     try {
-      const followUser = { following_user }
-      console.log(followUser);
+      const followUser =  following_user 
+      console.log("after follow",followUser);
       const ggwp1 = await axios.post(
-        `https://soapp-nodejs.herokuapp.com/users/follow`,followUser,
+        `https://soapp-nodejs.herokuapp.com/users/follow`, {
+          following_user : id
+      },
         {
           headers: {
 
@@ -146,19 +149,6 @@ const [isEditing, setIsEditing] = useState(false);
     },
   ];
 
-  //
-  const onDeleteStudent = (record) => {
-    Modal.confirm({
-      title: "Are you sure, you want to delete this Teacher record?",
-      okText: "Yes",
-      okType: "danger",
-      onOk: () => {
-        setDataSource((pre) => {
-          return pre.filter((student) => student.id !== record.id);
-        });
-      },
-    });
-  };
   
   return (
     <div className="App">
@@ -171,5 +161,5 @@ const [isEditing, setIsEditing] = useState(false);
   );
 };
 
-export default ApprovePage;
+export default Follow;
 

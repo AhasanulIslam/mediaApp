@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom"; // import { Nav, Navbar, NavDropdown, Container } from 'react-bootstrap'
 import "./NavBar.css";
-import { HomeTwoTone } from '@ant-design/icons';
+import { HomeTwoTone, UsergroupAddOutlined, UserDeleteOutlined } from '@ant-design/icons';
+import { Tooltip } from "antd";
+
 
 
 const Navber = () => {
@@ -18,7 +20,7 @@ const Navber = () => {
   return (
     <nav className="navbar">
       <div className="nav-container">
-        <NavLink  to="/" className="nav-logo">
+        <NavLink to="/" className="nav-logo">
           <> </>
           <i className="fas fa-code"></i>
         </NavLink>
@@ -27,7 +29,6 @@ const Navber = () => {
           {/* {localStorage.getItem('role') === '2'} */}
           <li className="nav-item">
             <NavLink
-              
               to="/quizde"
               activeClassName="active"
               className="nav-links"
@@ -36,43 +37,40 @@ const Navber = () => {
               <HomeTwoTone />
             </NavLink>
             <NavLink
-              
               to="/approvepage"
               activeClassName="active"
               className="nav-links"
               onClick={handleClick}
             >
-              Users
+              <UsergroupAddOutlined />
             </NavLink>
           </li>
-          <li className="nav-item">
-          </li>
+          <li className="nav-item"></li>
           <li className="nav-item">
             <NavLink
-              
               to="/rej"
               activeClassName="active"
               className="nav-links"
               onClick={handleClick}
             >
-              Unfollow User
+              <Tooltip placement="topLeft" title="Unfollow users">
+                <UserDeleteOutlined />
+              </Tooltip>
             </NavLink>
           </li>
           <li className="nav-item">
             <NavLink
-              
               to="/studentlist"
               activeClassName="active"
               className="nav-links"
               onClick={handleClick}
             >
-              Profie Update
+              Profie
             </NavLink>
           </li>
 
           <li className="nav-item">
             <NavLink
-              
               to="/createpost"
               activeClassName="active"
               className="nav-links"
@@ -84,7 +82,6 @@ const Navber = () => {
 
           <li className="nav-item">
             <NavLink
-              
               to="/"
               activeClassName="active"
               className="nav-links"

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Table } from "antd";
 import Navber from "../../Navber";
 
-const StudentList = () => {
+const Profile = () => {
     
 const [isEditing, setIsEditing] = useState(false);
 const [editingStudent, setEditingStudent] = useState(null);
@@ -89,4 +89,4 @@ const columns = [
   );
 }
 
-export default StudentList
+export default Profile
