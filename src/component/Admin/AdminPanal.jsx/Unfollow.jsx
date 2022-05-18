@@ -6,7 +6,7 @@ import "antd/dist/antd.css";
 import { Button, Tooltip } from "antd";
 import "../../../App.css"
 
-const Reject = () => {
+const Unfollow = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editingStudent, setEditingStudent] = useState(null);
   const [dataSource, setDataSource] = useState();
@@ -117,7 +117,7 @@ const Reject = () => {
     </div>
   );
 };
-export default Reject;
+export default Unfollow;
 
  // await axios
     //   .get(`http://localhost:4000/users/reject/${id}`, {

@@ -36,7 +36,7 @@
 .name,
 .email,
 .password {
-  margin: 20px;
+  /* margin: 20px; */
   color: #969292;
   font-size: 16px;
 }

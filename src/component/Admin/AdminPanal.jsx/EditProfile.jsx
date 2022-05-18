@@ -1,15 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import Validation from './Validation';
-import "../../component/Login/Login1.css";
+import Validation from '../../SignUp/Validation';
+import "../../../component/Login/Login1.css";
 import {
-  Form,
+
   Select,
 } from 'antd';
-
-
-
-const SignupFrom = ({ submitForm }) => {
+import Navber from '../../Navber';
+const EditProfile = () => {
     const [values, setValues] = useState({
         first_name: "",
         last_name: "",
@@ -34,14 +32,20 @@ const SignupFrom = ({ submitForm }) => {
     }
 
  
-    const handleFromSubmit = (event) => {
+    const handleFromSubmit = (event, id) => {
         event.preventDefault();
         setErrors(Validation(values))
         setDataIsCorrect(true)
         console.log(values);
-        axios.post(`https://soapp-nodejs.herokuapp.com/users/register`,
-     values)
-        .then(res => console.log(res.data))
+        axios.patch("https://soapp-nodejs.herokuapp.com/users/update-info",values,
+        
+         {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("user-info")}`,
+            },
+          },
+     )
+        .then(res => console.log("dfhi",res.data))
         .catch(e => console.log(e))
 
         // navigate("/login")
@@ -51,41 +55,24 @@ const SignupFrom = ({ submitForm }) => {
 
     useEffect(() => {
         if(Object.keys(errors).length === 0 && dataIsCorrect){
-            // submitForm(true)
         }
     }, [errors])
 
-    // useEffect(() => {
-    //     axios.get(url, headers).then(res => {setValues(res.data)})
-    //     .catch(e => console.log(e))
-    // }, [])
 
   return (
 
-    
+    <div>
+        <Navber/>
 <div className="login__container">
       <div className="login__welcome">
-        {/* <div className="login__logo">
-          <img src='https://assets-global.website-files.com/5f3c19f18169b65d9d0bf384/5f3c19f18169b655820bf3d4_asset%2021.svg' alt='logo'/>
-        </div> */}
 
-        <p>Sign Up</p>
+        <p>Update Info</p>
       </div>
 
 
         <div className="login__form-container">
         <div className="login__form">
     
-    {/* <div className="signup">
-    <div className="signup__content">
-      <div className="signup__container">
-        <div className="signup__title">Sign Up</div>
-
-              <span>Use Firstname, lastname, date of birth, email, gender and Password</span> */}
-
-              {/* <input type="text" placeholder="username" />
-              <input type="text" placeholder="password" />
-              <button>LOGIN</button> */}
             <div className="signup__form">
             <form >
             <div className="signup__subtitle"></div>
@@ -123,27 +110,7 @@ const SignupFrom = ({ submitForm }) => {
                     {errors.gender && <p className='error'>{errors.gender}</p>}
                 </div></div>
                 <div className='email'></div>
-                  
-                {/* <Form.Item
-        name="gender"
-        label="Gender"
-        value={values.gender} onChange={handleChange}
-        rules={[
-          {
-            required: true,
-            message: 'Please select gender!',
-          },
-        ]}
-      >
-        <Select placeholder="select your gender">
-          <Option value="male">Male</Option>
-          <Option value="female">Female</Option>
-          <Option value="other">Other</Option>
-        </Select>
-      </Form.Item> */}
-                
-
-                
+               
 
                 <div className='password'>
                     <label className='label'>Password</label>
@@ -152,7 +119,7 @@ const SignupFrom = ({ submitForm }) => {
 
                 </div>
                 <div>
-                    <button  className='signup__btn' onClick={handleFromSubmit}>Sign Up</button>
+                    <button  className='signup__btn' onClick={handleFromSubmit}>Update</button>
                 </div>
                 </div>
             </form>
@@ -160,7 +127,8 @@ const SignupFrom = ({ submitForm }) => {
             </div>
           </div>
           </div>
+          </div>
   )
 }
 
-export default SignupFrom
+export default EditProfile

@@ -29,7 +29,7 @@ const Navber = () => {
           {/* {localStorage.getItem('role') === '2'} */}
           <li className="nav-item">
             <NavLink
-              to="/quizde"
+              to="/home"
               activeClassName="active"
               className="nav-links"
               onClick={handleClick}
@@ -37,7 +37,7 @@ const Navber = () => {
               <HomeTwoTone />
             </NavLink>
             <NavLink
-              to="/approvepage"
+              to="/follow"
               activeClassName="active"
               className="nav-links"
               onClick={handleClick}
@@ -48,7 +48,7 @@ const Navber = () => {
           <li className="nav-item"></li>
           <li className="nav-item">
             <NavLink
-              to="/rej"
+              to="/unfollow"
               activeClassName="active"
               className="nav-links"
               onClick={handleClick}
@@ -60,7 +60,7 @@ const Navber = () => {
           </li>
           <li className="nav-item">
             <NavLink
-              to="/studentlist"
+              to="/profile"
               activeClassName="active"
               className="nav-links"
               onClick={handleClick}

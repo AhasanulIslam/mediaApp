@@ -1,17 +1,8 @@
-import { Card, Collapse, Button } from "antd";
+import { Collapse } from "antd";
 import "antd/dist/antd.css";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Navber from "../../Navber";
-import Validation from "../../SignUp/Validation";
-import {
-  LikeOutlined,
-  CommentOutlined,
-  ShareAltOutlined,
-} from "@ant-design/icons";
-
-import { Menu, Dropdown, message, Space, Tooltip } from "antd";
-import { AppstoreAddOutlined, UserOutlined } from "@ant-design/icons";
 import PostCard from "./Post/Card/PostCard";
 
 const { Panel } = Collapse;

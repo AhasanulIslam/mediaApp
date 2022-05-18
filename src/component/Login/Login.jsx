@@ -20,7 +20,7 @@ export default function Login() {
   
   useEffect(() => {
     if (localStorage.getItem('user-info')) {
-      navigate("/approvepage")
+      navigate("/home")
     }
   }, [])
 
@@ -47,7 +47,7 @@ export default function Login() {
       console.log("scscjhvcb",result);
       
      localStorage.setItem("user-info",result.data.token)
-    navigate("/approvepage")
+    navigate("/home")
     
     } catch (error) {
       console.log(error)
