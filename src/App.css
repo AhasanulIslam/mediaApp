@@ -63,13 +63,13 @@
   font-size: 20px;
   padding: 5px;
   outline: none;
-  width: 100%;
+  width: 20%;
   border-top-style: none;
   border-left-style: none;
   border-right-style: none;
   border-bottom-style: 2px solid black;
   margin-bottom: 10px;
-  background-color: #3b3737;
+  background-color: #0689C2;
   border-radius: 5px;
 }
 

@@ -117,6 +117,8 @@ const PostCard = ({postInfo}) => {
           </div>
         </div>
 
+        
+
         <div>
           <Button
             type="primary"
