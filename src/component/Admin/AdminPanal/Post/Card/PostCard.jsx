@@ -15,7 +15,9 @@ const PostCard = ({postInfo}) => {
         content: "",
         index: "",
       });
-    const [like, setLike] = useState(0);
+    // const [post_id, setPost_id] = useState({});
+  const [cls, setCls] = useState({color: "green"});
+
 
     const [errors, setErrors] = useState({});
     const handleChange = (event) => {
@@ -51,11 +53,51 @@ const PostCard = ({postInfo}) => {
         // navigate("/login")
       };
 
-      const postComment = (postInfo) => {
+      const postComment = (postInfo, id, content) => {
+        const body = {
+          post_id: id, 
+          content: content
+      }
+      console.log(body);
+        axios
+        .post(`https://soapp-nodejs.herokuapp.com/post/create-comment`, body, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("user-info")}`,
+          },
+        })
+        .then((res) => console.log(res.data))
+        .catch((e) => console.log(e));
+        console.log(postInfo)
+        console.log(values)
+      }
+      
+  
+      const Like_Change = () => {
+        cls.color === 'green' ? setCls({color: 'red'}) : setCls({color: 'green'})
+      }
+
+      const Like_Count = (id) => {
+        const body = {
+          post_id: id
+        }
+        console.log(body);
+        axios
+          .post(`https://soapp-nodejs.herokuapp.com/post/like`, body, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("user-info")}`,
+            },
+          })
+          .then((res) => console.log(res.data))
+          .catch((e) => console.log(e));
+      }
+
+      const updateComment = (postInfo) => {
 
         console.log(postInfo)
         console.log(values)
       }
+      
+     
 
     const menu = (
         <Menu
@@ -79,7 +121,7 @@ const PostCard = ({postInfo}) => {
           ]}
         />
       );
-
+    
   return (
     <Card
     title={postInfo.first_name}
@@ -100,6 +142,11 @@ const PostCard = ({postInfo}) => {
       <h4 className=""> {postInfo.content}</h4>
       <h4 className="">{postInfo.picture}</h4>
 
+      <div>
+          <h2>Comment</h2>
+           <p>{values?.content}</p>
+        </div>
+
       <form className="from-wrapper">
         <div className="email">
           <div className="name">
@@ -117,7 +164,7 @@ const PostCard = ({postInfo}) => {
           </div>
         </div>
 
-        
+     
 
         <div>
           <Button
@@ -125,18 +172,26 @@ const PostCard = ({postInfo}) => {
             shape="round"
             icon={<CommentOutlined />}
             size='large'
-            onClick={() => postComment(postInfo)}
+            onClick={() => postComment(postInfo, postInfo.id, postInfo.content)}
           >
             Comment
           </Button>{" "}
         </div>
       </form>
       <br />
+      <style>{`
+        .red {color: red}
+        .green {color: green}
+      `}</style>
       <Button
         type="primary"
         shape="round"
         icon={<LikeOutlined />}
         size='large'
+        style={cls}
+        // className={cls}
+        onClick= {() => {Like_Change(); Like_Count(postInfo.id);}}
+        // {() => cls.color === 'green' ? setCls({color: 'red'}) : setCls({color: 'green'}) like() }
       >
         Like
       </Button>
@@ -148,5 +203,6 @@ Share
   </Card>
   )
 }
+
 
 export default PostCard

@@ -1,17 +1,16 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Post from "./component/Admin/AdminPanal.jsx/Post";
-import Follow from "./component/Admin/AdminPanal.jsx/Follow";
-import Home from "./component/Admin/AdminPanal.jsx/Home";
-import Unfollow from "./component/Admin/AdminPanal.jsx/Unfollow";
+import Post from "./component/Admin/AdminPanal/Post";
+import Follow from "./component/Admin/AdminPanal/Follow";
+import Home from "./component/Admin/AdminPanal/Home";
+import Unfollow from "./component/Admin/AdminPanal/Unfollow";
 import From from "./component/SignUp/From";
 import Login from "./component/Login/Login";
 import Navber from "./component/Navber";
-import Profile from "./component/Admin/AdminPanal.jsx/Profile/Profile.jsx";
-import EditProfile from "./component/Admin/AdminPanal.jsx/EditProfile";
-import CustomizedTables from "./component/Table";
+import Profile from "./component/Admin/AdminPanal/Profile/Profile.jsx";
+import EditProfile from "./component/Admin/AdminPanal/EditProfile";
 
 import "./App.css";
-import CreatePost from "./component/Admin/AdminPanal.jsx/Post/CreatePost";
+import CreatePost from "./component/Admin/AdminPanal/Post/CreatePost";
 
 function App() {
   return (
@@ -27,7 +26,6 @@ function App() {
           <Route path="/follow" element={<Follow />}></Route>
           <Route path="/aprrove" element={<Post />}></Route>
           <Route path="/unfollow" element={<Unfollow />}></Route>
-          <Route path="/av" element={<CustomizedTables />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/editprofile" element={<EditProfile />}></Route>

@@ -28,7 +28,7 @@ const Follow = () => {
       });
   }, [isEditing, following_user]);
 
-  const approve = async (id) => {
+  const follow = async (id) => {
     console.log("Approved id", id);
     console.log("follow id", following_user);
     try {
@@ -54,26 +54,8 @@ const Follow = () => {
     }
   };
 
-  const reject = async (id) => {
-    console.log("Rejected id", id);
-
-    try {
-      const { data, status } = await axios.get(
-        `https://nano-quiz-api.herokuapp.com/users/reject/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("user-info")}`,
-          },
-        }
-      );
-
-      console.log(data, status);
-
-      setIsEditing(!isEditing);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  
+  
 
   const columns = [
     {
@@ -100,7 +82,7 @@ const Follow = () => {
           <>
             <Tooltip placement="topLeft" title="Follow this user">
               <Button
-                onClick={() => approve(info.id)}
+                onClick={() => follow(info.id)}
                 type="primary"
                 shape="round"
               >
